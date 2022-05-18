@@ -11,7 +11,7 @@ export default function DayListItem(props) {
   return (
     <li className={dayListClassName} onClick={() => props.setDay(dayName)}>
       <h2 className="text--regular">{dayName}</h2> 
-      <h3 className="text--light">{props.spots} spots remaining</h3>
+      <h3 className="text--light">{props.spots === 0 ? "no": props.spots} {props.spots === 1 ? "spot": "spots"} remaining</h3>
     </li>
   );
 }
