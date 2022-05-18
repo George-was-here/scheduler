@@ -7,7 +7,7 @@ import classNames from "classnames";
 export default function DayListItem(props) {
   const dayName = props.name;
   const dayListClassName = classNames('dayClass day-list__item', { "day-list__item--selected": props.selected, "day-list__item--full": props.spots === 0});
-
+  
   return (
     <li className={dayListClassName} onClick={() => props.setDay(dayName)}>
       <h2 className="text--regular">{dayName}</h2> 
