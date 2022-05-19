@@ -23,7 +23,7 @@ const days = [
 ];
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday");
+  const [value, onChange] = useState("Monday");
   // const selectDay = () => setDay(day => day === props.days[1]);
   // const [Interviewer, setInterviewer] = useState("");
 
@@ -39,8 +39,8 @@ export default function Application(props) {
         <nav className="sidebar__menu">
           <DayList
             days={days}
-            day={day}
-            setDay={setDay}
+            value={day}
+            OnChange={setDay}
           />
         </nav>
         <img
