@@ -11,12 +11,13 @@ export default function InterviewerList (props) {
   <section className="interviewers">
     <h4 className="interviewers__header text--light">Interviewer</h4>
     <ul className="interviewers__list">
-    {props.interviewers.map(interviewer => <InterviewerListItem key={interviewer.id} setInterviewer={props.setInterviewer} name={interviewer.name} selected={interviewer.id === props.interviewer} avatar={interviewer.avatar}/>)}
+    {props.interviewers.map(interviewer => <InterviewerListItem key={interviewer.id} setInterviewer={() => props.setInterviewer(interviewer.id)} name={interviewer.name} selected={interviewer.id === props.interviewer} avatar={interviewer.avatar}/>)}
     </ul>
   </section>
   );
 }
 
+// setInterviewer={() => props.setInterviewer(interviewer.id)}
 // return (
 //   <ul>
 //     {props.days.map(day => <DayListItem key={day.id} setDay={props.setDay} spots={day.spots} selected={day.name === props.day} name={day.name}/>)}
