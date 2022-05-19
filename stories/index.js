@@ -35,11 +35,11 @@ storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
   }) 
-  .add("Unselected", () => <DayListItem name="Monday" spots={5} />) 
-  .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
-  .add("Full", () => <DayListItem name="Monday" spots={0} />)
+  .add("Unselected", () => <DayListItem value="Monday" spots={5} />) 
+  .add("Selected", () => <DayListItem value="Monday" spots={5} selected />) 
+  .add("Full", () => <DayListItem value="Monday" spots={0} />)
   .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> 
+    <DayListItem value="Tuesday" setDay={action("setDay")} spots={5} /> 
   ));
 
   const days = [
@@ -118,24 +118,25 @@ storiesOf("Button", module)
       ];
       
       storiesOf("InterviewerList", module)
-        .addParameters({
-          backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-        })
-        .add("Initial", () => (
-          <InterviewerList
-            interviewers={interviewers}
-          />
-        ))
-        .add("Selected", () => (
-          <InterviewerList
-            interviewers={interviewers}
-            interviewer={3}
-          />
-        ))
-        .add("Clickable", () => (
-          <InterviewerListItem
-            name={interviewer.name}
-            avatar={interviewer.avatar}
-            setInterviewer={() => action("setInterviewer")(interviewer.id)}
-          />
-        ));
+      .addParameters({
+        backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+      })
+      .add("Initial", () => (
+        <InterviewerList
+          interviewers={interviewers}
+          onChange={action("setInterviewer")}
+        />
+      ))
+      .add("Selected", () => (
+        <InterviewerList
+          interviewers={interviewers}
+          value={3}
+          onChange={action("setInterviewer")}
+        />
+      ))
+      .add("Clickable", () => (
+        <InterviewerList
+          interviewers={interviewers}
+          onChange={action("setInterviewer")}
+        />
+      ));

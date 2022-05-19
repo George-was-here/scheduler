@@ -23,7 +23,7 @@ const days = [
 ];
 
 export default function Application(props) {
-  const [value, onChange] = useState("Monday");
+  const [day, setDay] = useState("Monday");
   // const selectDay = () => setDay(day => day === props.days[1]);
   // const [Interviewer, setInterviewer] = useState("");
 
@@ -40,7 +40,7 @@ export default function Application(props) {
           <DayList
             days={days}
             value={day}
-            OnChange={setDay}
+            onChange={setDay}
           />
         </nav>
         <img
