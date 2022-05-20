@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "components/Button";
-import InterviewList from "components/InterviewerList";
+import InterviewerList from "components/InterviewerList";
 
 export default function Form(props) {
 
@@ -20,13 +20,13 @@ export default function Form(props) {
           />
         </form>
         <InterviewerList 
-          /* your code goes here */
+          interviewers={props.interviewers}
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger {/* your code goes here */}>Cancel</Button>
-          <Button confirm {/* your code goes here */}>Save</Button>
+          <Button danger onClick={props.onCancel}>Cancel</Button>
+          <Button confirm onSave={props.onSave}>Save</Button>
         </section>
       </section>
     </main>
