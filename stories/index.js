@@ -27,6 +27,8 @@ import Confirm from "components/Appointment/Confirm"
 
 import Status from "components/Appointment/Status"
 
+import Error from "components/Appointment/Error"
+
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -163,16 +165,5 @@ storiesOf("Button", module)
     .add("Empty", () => <Empty onAdd={action("onAddd")} />)
     .add("Show", () => <Show student="Lydia Miller-Jones" interviewer={interviewers[0]} onEdit={action("onEdit")} onDelete={action("onDelete")} />)
     .add("Confirm", () => <Confirm message="Delete the appointment?" onConfirm={action("onConfirm")} onCancel={action("onCancel")} />)
-    .add("Status", () =>  <Status message="Deleting" />);
-
-
-
-  
-
-    // student:String eg. "Lydia Miller-Jones"
-    // interviewer:Object we can use the interview object that already exists in stories/index.js for this
-    // onEdit:Function to be called when the user clicks the Edit button
-    // onDelete:Function to be called when the user clicks the Delete button
-
-    // We want to pass the onEdit and onDelete named action callbacks to help confirm that the component behaves correctly when clicked. In this case, we should pass onEdit={action("onEdit")} so that we can see the output in the action panel when we click the edit button.
-
+    .add("Status", () =>  <Status message="Deleting" />)
+    .add("Error", () =>  <Error message="Could not delete appoint" onClose={action("onClose")} />);
