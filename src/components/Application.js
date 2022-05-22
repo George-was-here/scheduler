@@ -1,27 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import Appointment from "./Appointment";
+
 
 import "components/Application.scss";
 
 import DayList from "./DayList";
-
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
 
 const appointments = {
   "1": {
@@ -63,14 +47,22 @@ const appointments = {
 };
 
 export default function Application(props) {
+  const [days, setDays] = useState([]);
   const [day, setDay] = useState("Monday");
   const appointmentsArray = Object.values(appointments);
+
+  useEffect(() => {
+    const axiosRoute = `http://localhost:8001/api/days`;
+    axios.get(axiosRoute).then(response => {
+      setDays([...response.data]);
+    });
+  }, []);
 
   return (
     <main className="layout">
       <section className="sidebar">
         <img
-          className="sidebar--centered"
+          className="sidebar--centered"x
           src="images/logo.png"
           alt="Interview Scheduler"
         />
