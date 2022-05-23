@@ -16,6 +16,9 @@ export default function Application(props) {
     interviewers: {},
   });
 
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
@@ -60,7 +63,8 @@ export default function Application(props) {
          <Appointment
           key={appointment.id} 
           interviewers={dailyInterviewers}
-          {...appointment} 
+          {...appointment}
+          bookInterview={bookInterview} 
          />
        ))}
        {/* Last appointment  */}
