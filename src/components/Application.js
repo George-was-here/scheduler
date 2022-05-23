@@ -51,7 +51,8 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {},
   });
 
 
@@ -60,29 +61,17 @@ export default function Application(props) {
   const appointmentsArray = Object.values(state.appointments);
 
   const setDay = day => setState(prev => ({ ...prev, day }));
-  // const setDays = days => setState(prev => ({ ...prev, days }));
 
   useEffect(() => {
     Promise.all([
       axios.get(`http://localhost:8001/api/days`),
-      axios.get(`http://localhost:8001/api/appointments`)
+      axios.get(`http://localhost:8001/api/appointments`),
+      axios.get(`http://localhost:8001/api/interviewers`)
     ]).then((all) => {
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data }));
-    // const axiosRoute = `http://localhost:8001/api/days`;
-    // axios.get(axiosRoute).then(response => {
-      // setDays([...response.data]);
+      console.log(all[2]);
     });
   }, []);
-
-  // Promise.all([
-  //   axios.get('/first_endpoint'),
-  //   axios.get('/second_endpoint'),
-  //   axios.get('/third_endpoint')
-  // ]).then((all) => {
-  //   console.log(all[0]); // first
-  //   console.log(all[1]); // second
-  //   console.log(all[2]); // third
-  // });
 
   return (
     <main className="layout">
