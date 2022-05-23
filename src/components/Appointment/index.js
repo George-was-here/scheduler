@@ -14,7 +14,7 @@ const CREATE = "CREATE";
 
 export default function Appointment (props) {
   const {mode, transition, back} = useVisualMode(props.interview ? SHOW : EMPTY);
-  
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -31,7 +31,7 @@ export default function Appointment (props) {
           interviewer={props.interview ? props.interview.interviewer: null}
           onAdd={() => {}}
           onCancel={back}
-          interviewers={[]}
+          interviewers={props.interviewers}
         />
       )}
     </article>
