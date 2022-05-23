@@ -4,11 +4,17 @@ export function useVisualMode(modeOrg) {
 const [mode, setMode] = useState(modeOrg);
 const [history, setHistory] = useState([modeOrg]);
 
-function transition(newMode) {
+function transition(newMode, replace = false) {
   // set the new mode state
   setMode(newMode);
   // add new mode to history state
-  setHistory([...history, newMode])
+  if (replace) {
+    const newHistory = history;
+    history[history.length - 1] = newMode;
+    setHistory(newHistory);
+  } else {
+    setHistory([...history, newMode]);
+  }
 }
 
 function back() {
