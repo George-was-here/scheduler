@@ -41,7 +41,7 @@ export default function Application(props) {
     return new Promise((resolve, reject) => {
     axios.delete(`http://localhost:8001/api/appointments/${id}`).then(() => {
       const stateAppointments = {...state.appointments};
-      delete stateAppointments[id].interview;
+      stateAppointments[id].interview = null;
       setState(prev => ({...prev, appointments: stateAppointments}));
       resolve();
     }).catch(() => {
