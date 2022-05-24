@@ -1,8 +1,9 @@
-import React,  { useEffect } from "react";
+import React from "react";
 import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
+import Status from "./Status";
 
 import { useVisualMode } from "hooks/useVisualMode";
 
@@ -10,19 +11,22 @@ import "./styles.scss";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
+const SAVING = "SAVING";
 const CREATE = "CREATE";
 
 export default function Appointment (props) {
   const {mode, transition, back} = useVisualMode(props.interview ? SHOW : EMPTY);
 
   function save(name, interviewer) {
+    transition(SAVING);
     const interview = {
       student: name,
-      interviewer
+      interviewer: interviewer.id
     };
-    props.bookInterview(props.id, interview);
+    props.bookInterview(props.id, interview).then(() => {
+      transition(SHOW);
+    }) 
   }
-
 
   return (
     <article className="appointment">
@@ -43,6 +47,9 @@ export default function Appointment (props) {
           interviewers={props.interviewers}
           onSave={save}
         />
+      )}
+      {mode === SAVING && (
+        <Status message="Loading..."/>
       )}
     </article>
   );
