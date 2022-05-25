@@ -27,7 +27,7 @@ export default function Appointment (props) {
     transition(SAVING, true);
     const interview = {
       student: name,
-      interviewer: interviewer.id
+      interviewer: interviewer
     };
     props.bookInterview(props.id, interview).then(() => {
       transition(SHOW)
