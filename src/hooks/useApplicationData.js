@@ -34,7 +34,8 @@ export default function useApplicationData() {
 
     return new Promise((resolve, reject) => {
       axios.put(`http://localhost:8001/api/appointments/${appointment.id}`, {interview}).then(() => {
-        setState(prev => ({...prev, appointments}));
+        const days = updateSpots(state, appointments);
+        setState(prev => ({...prev, appointments, days}));
         resolve();
       }).catch(() => {
         reject()
@@ -44,15 +45,33 @@ export default function useApplicationData() {
 
   function cancelInterview(id) {
     return new Promise((resolve, reject) => {
-    axios.delete(`http://localhost:8001/api/appointments/${id}`).then(() => {
-      const stateAppointments = {...state.appointments};
-      stateAppointments[id].interview = null;
-      setState(prev => ({...prev, appointments: stateAppointments}));
-      resolve();
-    }).catch(() => {
-      reject()
-    })
-  });
+      axios.delete(`http://localhost:8001/api/appointments/${id}`).then(() => {
+        const stateAppointments = {...state.appointments};
+        stateAppointments[id].interview = null;
+        const days = updateSpots(state, stateAppointments);
+        setState(prev => ({...prev, appointments: stateAppointments, days}));
+        resolve();
+      }).catch(() => {
+        reject()
+      })
+    });
   }
+
+  function updateSpots(localState, appointments) {
+    const localStateCopy = Object.assign({}, localState);
+    const currentDayIndex = localStateCopy.days.findIndex(day => day.name === localStateCopy.day);
+    const currentDay = Object.assign({}, localStateCopy.days[currentDayIndex])
+    let spots = 0; 
+    localStateCopy.days[currentDayIndex].appointments.forEach((appointmentId) => {
+      if(!appointments[appointmentId].interview) {
+        spots++;
+      }
+    });
+    currentDay.spots = spots;
+  
+    const retArray = [...localStateCopy.days.filter(day => day.name !== localStateCopy.day), currentDay].sort((a, b) =>  a.id - b.id)
+    return retArray;
+  }
+
   return { state, setDay, bookInterview, cancelInterview }
 }

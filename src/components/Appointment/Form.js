@@ -34,7 +34,7 @@ export default function Form(props) {
           />
         </form>
         <InterviewerList 
-          value={interviewer ? interviewer.id : null}
+          value={interviewer || null}
           interviewers={props.interviewers}
           onChange={(interviewerId) => {
             const updatedInterviewer = props.interviewers.find(interviewer => interviewer.id === interviewerId);
