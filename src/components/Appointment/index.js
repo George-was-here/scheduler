@@ -16,6 +16,7 @@ const SHOW = "SHOW";
 const SAVING = "SAVING";
 const CREATE = "CREATE";
 const CONFIRM = "CONFIRM";
+const DELETING = "DELETING";
 const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
@@ -36,7 +37,7 @@ export default function Appointment (props) {
   }
 
   function deleteInterview() {
-    transition(SAVING, true);
+    transition(DELETING, true);
     props.cancelInterview(props.id).then(() => {
       transition(EMPTY)
     }).catch(() => transition(ERROR_DELETE, true));
@@ -65,6 +66,9 @@ export default function Appointment (props) {
       )}
       {mode === SAVING && (
         <Status message="Loading..."/>
+      )}
+      {mode === DELETING && (
+        <Status message="Deleting"/>
       )}
       {mode === CONFIRM && (
         <Confirm message="Are you sure you'd like to delete my friend?"
