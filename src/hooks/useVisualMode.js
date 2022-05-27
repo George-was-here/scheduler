@@ -1,4 +1,4 @@
-import React, { useState } from "react";  
+import React, { useState } from "react";
 
 export function useVisualMode(modeOrg) {
   const [mode, setMode] = useState(modeOrg);
@@ -20,7 +20,7 @@ export function useVisualMode(modeOrg) {
   function back() {
     const newHistory = history;
     // remove the last element
-    if(newHistory.length > 1) {
+    if (newHistory.length > 1) {
       newHistory.pop();
       setHistory(newHistory);
       setMode(newHistory[newHistory.length - 1]);
@@ -31,5 +31,5 @@ export function useVisualMode(modeOrg) {
     mode,
     transition,
     back
-  }
-};
+  };
+}

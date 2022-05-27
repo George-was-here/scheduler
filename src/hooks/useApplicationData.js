@@ -38,9 +38,9 @@ export default function useApplicationData() {
         setState(prev => ({...prev, appointments, days}));
         resolve();
       }).catch(() => {
-        reject()
-      })
-    })
+        reject();
+      });
+    });
   }
 
   function cancelInterview(id) {
@@ -52,26 +52,26 @@ export default function useApplicationData() {
         setState(prev => ({...prev, appointments: stateAppointments, days}));
         resolve();
       }).catch(() => {
-        reject()
-      })
+        reject();
+      });
     });
   }
 
   function updateSpots(localState, appointments) {
     const localStateCopy = Object.assign({}, localState);
     const currentDayIndex = localStateCopy.days.findIndex(day => day.name === localStateCopy.day);
-    const currentDay = Object.assign({}, localStateCopy.days[currentDayIndex])
-    let spots = 0; 
+    const currentDay = Object.assign({}, localStateCopy.days[currentDayIndex]);
+    let spots = 0;
     localStateCopy.days[currentDayIndex].appointments.forEach((appointmentId) => {
-      if(!appointments[appointmentId].interview) {
+      if (!appointments[appointmentId].interview) {
         spots++;
       }
     });
     currentDay.spots = spots;
   
-    const retArray = [...localStateCopy.days.filter(day => day.name !== localStateCopy.day), currentDay].sort((a, b) =>  a.id - b.id)
+    const retArray = [...localStateCopy.days.filter(day => day.name !== localStateCopy.day), currentDay].sort((a, b) =>  a.id - b.id);
     return retArray;
   }
 
-  return { state, setDay, bookInterview, cancelInterview }
+  return { state, setDay, bookInterview, cancelInterview };
 }

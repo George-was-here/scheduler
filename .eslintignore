@@ -1,0 +1,3 @@
+{
+  "ignorePatterns": ["*.spec.js", "*.test.js"],
+}

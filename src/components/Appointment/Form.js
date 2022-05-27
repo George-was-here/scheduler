@@ -41,17 +41,19 @@ export default function Form(props) {
             name="name"
             type="text"
             placeholder="Enter Student Name"
-            value={student} 
-            onChange={(event) => {setStudent(event.target.value)}}
+            value={student}
+            onChange={(event) => {
+              setStudent(event.target.value);
+            }}
             data-testid="student-name-input"
           />
         </form>
         <section className="appointment__validation">{error}</section>
-        <InterviewerList 
+        <InterviewerList
           value={interviewer || null}
           interviewers={props.interviewers}
           onChange={(interviewerId) => {
-            setInterviewer(interviewerId)
+            setInterviewer(interviewerId);
           }}
         />
       </section>
@@ -62,5 +64,5 @@ export default function Form(props) {
         </section>
       </section>
     </main>
-  ); 
+  );
 }
