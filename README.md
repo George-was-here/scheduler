@@ -26,7 +26,7 @@ Interview Scheduler is a single-page web application for booking interview appoi
 
 ## Setup
 
-Install dependencies with `npm install`.
+* Install dependencies with `npm install`.
 
 ## Running Webpack Development Server
 
@@ -48,6 +48,8 @@ npm run storybook
 
 ## Screenshots
 
+* Some samples of Interview Schedule functionality below.
+
 !["View of interview appointment selection before submission."](https://github.com/George-was-here/scheduler/blob/main/docs/adding-interview.png?raw=true)
 
 !["Confirmation window to delete an appointment."](https://github.com/George-was-here/scheduler/blob/main/docs/confirming-deletion-of-interview.png?raw=true)
@@ -56,33 +58,33 @@ npm run storybook
 
 ## Dependencies
 
-  "node"
-  "axios": "^0.24.0",
-  "classnames": "^2.2.6",
-  "normalize.css": "^8.0.1",
-  "react": "^16.9.0",
-  "react-dom": "^16.9.0",
-  "react-scripts": "3.0.0"
-  "@babel/core": "^7.4.3",
-  "@storybook/addon-actions": "^5.0.10",
-  "@storybook/addon-backgrounds": "^5.0.10",
-  "@storybook/addon-links": "^5.0.10",
-  "@storybook/addons": "^5.0.10",
-  "@storybook/react": "^5.0.10",
-  "@testing-library/jest-dom": "^4.0.0",
-  "@testing-library/react": "^8.0.7",
-  "@testing-library/react-hooks": "^8.0.0",
-  "babel-loader": "^8.0.5",
-  "node-sass": "^4.14.0",
-  "prop-types": "^15.8.1",
-  "react-test-renderer": "^16.9.0"
-  "body-parser": "^1.18.3",
-  "cors": "^2.8.5",
-  "dotenv": "^7.0.0",
-  "express": "^4.16.4",
-  "helmet": "^3.18.0",
-  "pg": "^8.5.0",
-  "socket.io": "^2.2.0",
-  "ws": "^7.0.0"
+```sh
+  - Node 5.10.x or above
+  - Axios 0.24.0 or above
+  - Classnames 2.2.6 or above
+  - Normalize.css 8.0.1
+  - React 16.9.0 or above
+  - Babel/core 7.4.3
+  - Storybook/addon-actions 5.0.10
+  - Storybook/addon-backgrounds 5.0.10
+  - Storybook/addon-links 5.0.10 
+  - Storybook/addons 5.0.10
+  - Storybook/react 5.0.10
+  - Testing-library/jest-dom 4.0.0
+  - Testing-library/react 8.0.7
+  - Testing-library/react-hooks 8.0.0
+  - Babel-loader 8.0.5
+  - Node-sass 4.14.0
+  - Prop-types 15.8.1
+  - React-test-renderer 16.9.0
+  - Body-parser 1.18.3
+  - Cors 2.8.5
+  - dotenv7.0.0
+  - Express 4.16.4,
+  - Helmet 3.18.0,
+  - PostgreSQL 8.5.0
+  - socket.io 2.2.0
+  - ws 7.0.0
+```
 
 
