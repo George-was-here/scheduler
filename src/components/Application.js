@@ -20,7 +20,7 @@ export default function Application(props) {
     <main className="layout">
       <section className="sidebar">
         <img
-          className="sidebar--centered"x
+          className="sidebar--centered"
           src="images/logo.png"
           alt="Interview Scheduler"
         />
